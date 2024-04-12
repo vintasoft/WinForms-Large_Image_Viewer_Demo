@@ -51,6 +51,14 @@ namespace LargeImageViewerDemo
         #region Constructors
 
         /// <summary>
+        /// Initializes the <see cref="MainForm"/> class.
+        /// </summary>
+        static MainForm()
+        {
+            WsiCodecAssembly.Init();
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MainForm"/> class.
         /// </summary>
         public MainForm()
@@ -70,6 +78,8 @@ namespace LargeImageViewerDemo
             _disableChangeZoom = true;
             zoomComboBox.Text = imageViewer1.Zoom.ToString();
             _disableChangeZoom = false;
+
+            imageViewer1.CenterImage = true;
 
             _imageMapTool = new ImageMapTool();
             _imageMapTool.Enabled = true;
@@ -201,7 +211,7 @@ namespace LargeImageViewerDemo
         #region 'File' menu
 
         /// <summary>
-        /// Handles the Click event of OpenToolStripMenuItem object.
+        /// Handles the Click event of openToolStripMenuItem object.
         /// </summary>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -213,7 +223,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of CloseToolStripMenuItem object.
+        /// Handles the Click event of closeToolStripMenuItem object.
         /// </summary>
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -221,7 +231,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ExitToolStripMenuItem object.
+        /// Handles the Click event of exitToolStripMenuItem object.
         /// </summary>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -234,7 +244,7 @@ namespace LargeImageViewerDemo
         #region 'View' menu
 
         /// <summary>
-        /// Handles the Click event of RotateClockwiseToolStripMenuItem object.
+        /// Handles the Click event of rotateClockwiseToolStripMenuItem object.
         /// </summary>
         private void rotateClockwiseToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -242,7 +252,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of RotateCounterclockwiseToolStripMenuItem object.
+        /// Handles the Click event of rotateCounterclockwiseToolStripMenuItem object.
         /// </summary>
         private void rotateCounterclockwiseToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -250,7 +260,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ImageViewerSettingsToolStripMenuItem object.
+        /// Handles the Click event of imageViewerSettingsToolStripMenuItem object.
         /// </summary>
         private void imageViewerSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -263,7 +273,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ImageMapSettingsToolStripMenuItem object.
+        /// Handles the Click event of imageMapSettingsToolStripMenuItem object.
         /// </summary>
         private void imageMapSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -275,7 +285,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of FullScreenToolStripMenuItem object.
+        /// Handles the CheckedChanged event of fullScreenToolStripMenuItem object.
         /// </summary>
         private void fullScreenToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
@@ -308,7 +318,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of ShowScrollbarsToolStripMenuItem object.
+        /// Handles the CheckedChanged event of showScrollbarsToolStripMenuItem object.
         /// </summary>
         private void showScrollbarsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
@@ -317,7 +327,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of TopPanelAlwaysVisibleToolStripMenuItem object.
+        /// Handles the CheckedChanged event of topPanelAlwaysVisibleToolStripMenuItem object.
         /// </summary>
         private void topPanelAlwaysVisibleToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
@@ -334,7 +344,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the SelectedIndexChanged event of SizeModeToolStripComboBox object.
+        /// Handles the SelectedIndexChanged event of sizeModeToolStripComboBox object.
         /// </summary>
         private void sizeModeToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -342,7 +352,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ColorManagementToolStripMenuItem object.
+        /// Handles the Click event of colorManagementToolStripMenuItem object.
         /// </summary>
         private void colorManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -355,7 +365,7 @@ namespace LargeImageViewerDemo
         #region 'Visual Tools' menu
 
         /// <summary>
-        /// Handles the Click event of NoneToolStripMenuItem object.
+        /// Handles the Click event of noneToolStripMenuItem object.
         /// </summary>
         private void noneToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -364,7 +374,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ZoomToolStripMenuItem object.
+        /// Handles the Click event of zoomToolStripMenuItem object.
         /// </summary>
         private void zoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -375,7 +385,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of ZoomToSelectionToolStripMenuItem object.
+        /// Handles the Click event of zoomToSelectionToolStripMenuItem object.
         /// </summary>
         private void zoomToSelectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -384,7 +394,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of PanToolStripMenuItem object.
+        /// Handles the Click event of panToolStripMenuItem object.
         /// </summary>
         private void panToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -393,12 +403,14 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the Click event of MagnifierToolStripMenuItem object.
+        /// Handles the Click event of magnifierToolStripMenuItem object.
         /// </summary>
         private void magnifierToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // create and set MagnifierTool as current visual tool in image viewer
-            SetNewVisualTool(new MagnifierTool());
+            MagnifierTool magnifierTool = new MagnifierTool();
+            magnifierTool.Size = new Size(250, 250);
+            SetNewVisualTool(magnifierTool);
         }
 
         #endregion
@@ -407,7 +419,7 @@ namespace LargeImageViewerDemo
         #region 'Help' menu
 
         /// <summary>
-        /// Handles the Click event of AboutToolStripMenuItem object.
+        /// Handles the Click event of aboutToolStripMenuItem object.
         /// </summary>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -446,7 +458,7 @@ namespace LargeImageViewerDemo
         #region Zoom
 
         /// <summary>
-        /// Handles the ValueChanged event of ZoomTrackBar object.
+        /// Handles the ValueChanged event of zoomTrackBar object.
         /// </summary>
         private void zoomTrackBar_ValueChanged(object sender, EventArgs e)
         {
@@ -454,7 +466,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the KeyDown event of ZoomComboBox object.
+        /// Handles the KeyDown event of zoomComboBox object.
         /// </summary>
         private void zoomComboBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -463,7 +475,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the SelectedIndexChanged event of ZoomComboBox object.
+        /// Handles the SelectedIndexChanged event of zoomComboBox object.
         /// </summary>
         private void zoomComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -471,7 +483,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the SelectedIndexChanged event of MaxZoomToolStripComboBox object.
+        /// Handles the SelectedIndexChanged event of maxZoomToolStripComboBox object.
         /// </summary>
         private void maxZoomToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -479,7 +491,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the KeyDown event of MaxZoomToolStripComboBox object.
+        /// Handles the KeyDown event of maxZoomToolStripComboBox object.
         /// </summary>
         private void maxZoomToolStripComboBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -497,7 +509,7 @@ namespace LargeImageViewerDemo
         }
 
         /// <summary>
-        /// Handles the ZoomChanged event of ImageViewer1 object.
+        /// Handles the ZoomChanged event of imageViewer1 object.
         /// </summary>
         private void imageViewer1_ZoomChanged(object sender, ZoomChangedEventArgs e)
         {
@@ -548,9 +560,16 @@ namespace LargeImageViewerDemo
                 }
 
                 // update image info
+                string codecName = image.SourceInfo.DecoderName;
+                string primaryCodecName = image.SourceInfo.Decoder.GetPrimaryDecoderName(image.SourceInfo.PageIndex);
+                if (codecName != primaryCodecName)
+                    codecName = string.Format("{0} ({1})", codecName, primaryCodecName);
                 Text = string.Format("{0}{1}", _titlePrefix, string.Format(" - {0} ({1})", Path.GetFileName(filename), sizeInfo));
                 imageInfoToolStripStatusLabel.Text = string.Format("Codec={0}; PixelFormat={1}; Resolution={2}; Size={3}x{4} px",
-                    image.SourceInfo.DecoderName, image.PixelFormat, image.Resolution, image.Width, image.Height);
+                    codecName, image.PixelFormat, image.Resolution, image.Width, image.Height);
+
+                float maxZoom = (float)Math.Max(image.Resolution.Vertical, image.Resolution.Horizontal) / 96f * 100f * 2;
+                MaxZoom = (float)Math.Ceiling(maxZoom / 100f) * 100f;
 
                 // add images to viewer
                 imageViewer1.Images.AddRange(images.ToArray());

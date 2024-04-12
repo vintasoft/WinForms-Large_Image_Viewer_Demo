@@ -29,6 +29,7 @@ namespace LargeImageViewerDemo
         private void InitializeComponent()
         {
             Vintasoft.Imaging.Utils.WinFormsSystemClipboard winFormsSystemClipboard1 = new Vintasoft.Imaging.Utils.WinFormsSystemClipboard();
+            Vintasoft.Imaging.Codecs.Decoders.RenderingSettings renderingSettings1 = new Vintasoft.Imaging.Codecs.Decoders.RenderingSettings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,6 +57,8 @@ namespace LargeImageViewerDemo
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.sizeModeToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.rotateViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotateClockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotateCounterclockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.imageViewerSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageMapSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +77,6 @@ namespace LargeImageViewerDemo
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.rotateClockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotateCounterclockwiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -120,10 +121,10 @@ namespace LargeImageViewerDemo
             this.imageViewer1.Clipboard = winFormsSystemClipboard1;
             this.imageViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageViewer1.FocusPointAnchor = Vintasoft.Imaging.AnchorType.None;
+            this.imageViewer1.ImageRenderingSettings = renderingSettings1;
             this.imageViewer1.ImageRotationAngle = 0;
             this.imageViewer1.IsFocusPointFixed = false;
             this.imageViewer1.IsKeyboardNavigationEnabled = true;
-            this.imageViewer1.KeyboardNavigationScrollStep = 20;
             this.imageViewer1.Location = new System.Drawing.Point(0, 0);
             this.imageViewer1.Name = "imageViewer1";
             this.imageViewer1.RendererCacheSize = 256F;
@@ -363,6 +364,26 @@ namespace LargeImageViewerDemo
             this.rotateViewToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.rotateViewToolStripMenuItem.Text = "Rotate View";
             // 
+            // rotateClockwiseToolStripMenuItem
+            // 
+            this.rotateClockwiseToolStripMenuItem.Name = "rotateClockwiseToolStripMenuItem";
+            this.rotateClockwiseToolStripMenuItem.ShortcutKeyDisplayString = "Shift+Ctrl+Plus";
+            this.rotateClockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Oemplus)));
+            this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.rotateClockwiseToolStripMenuItem.Text = "Clockwise";
+            this.rotateClockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateClockwiseToolStripMenuItem_Click);
+            // 
+            // rotateCounterclockwiseToolStripMenuItem
+            // 
+            this.rotateCounterclockwiseToolStripMenuItem.Name = "rotateCounterclockwiseToolStripMenuItem";
+            this.rotateCounterclockwiseToolStripMenuItem.ShortcutKeyDisplayString = "Shift+Ctrl+Minus";
+            this.rotateCounterclockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.OemMinus)));
+            this.rotateCounterclockwiseToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.rotateCounterclockwiseToolStripMenuItem.Text = "Counterclockwise";
+            this.rotateCounterclockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateCounterclockwiseToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -441,35 +462,35 @@ namespace LargeImageViewerDemo
             // noneToolStripMenuItem
             // 
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // zoomToolStripMenuItem
             // 
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             this.zoomToolStripMenuItem.Click += new System.EventHandler(this.zoomToolStripMenuItem_Click);
             // 
             // zoomToSelectionToolStripMenuItem
             // 
             this.zoomToSelectionToolStripMenuItem.Name = "zoomToSelectionToolStripMenuItem";
-            this.zoomToSelectionToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.zoomToSelectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zoomToSelectionToolStripMenuItem.Text = "Zoom Selection";
             this.zoomToSelectionToolStripMenuItem.Click += new System.EventHandler(this.zoomToSelectionToolStripMenuItem_Click);
             // 
             // panToolStripMenuItem
             // 
             this.panToolStripMenuItem.Name = "panToolStripMenuItem";
-            this.panToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.panToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.panToolStripMenuItem.Text = "Pan";
             this.panToolStripMenuItem.Click += new System.EventHandler(this.panToolStripMenuItem_Click);
             // 
             // magnifierToolStripMenuItem
             // 
             this.magnifierToolStripMenuItem.Name = "magnifierToolStripMenuItem";
-            this.magnifierToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.magnifierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.magnifierToolStripMenuItem.Text = "Magnifier";
             this.magnifierToolStripMenuItem.Click += new System.EventHandler(this.magnifierToolStripMenuItem_Click);
             // 
@@ -488,26 +509,6 @@ namespace LargeImageViewerDemo
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.aboutToolStripMenuItem.Text = "About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // rotateClockwiseToolStripMenuItem
-            // 
-            this.rotateClockwiseToolStripMenuItem.Name = "rotateClockwiseToolStripMenuItem";
-            this.rotateClockwiseToolStripMenuItem.ShortcutKeyDisplayString = "Shift+Ctrl+Plus";
-            this.rotateClockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Oemplus)));
-            this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.rotateClockwiseToolStripMenuItem.Text = "Clockwise";
-            this.rotateClockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateClockwiseToolStripMenuItem_Click);
-            // 
-            // rotateCounterclockwiseToolStripMenuItem
-            // 
-            this.rotateCounterclockwiseToolStripMenuItem.Name = "rotateCounterclockwiseToolStripMenuItem";
-            this.rotateCounterclockwiseToolStripMenuItem.ShortcutKeyDisplayString = "Shift+Ctrl+Minus";
-            this.rotateCounterclockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.OemMinus)));
-            this.rotateCounterclockwiseToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.rotateCounterclockwiseToolStripMenuItem.Text = "Counterclockwise";
-            this.rotateCounterclockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateCounterclockwiseToolStripMenuItem_Click);
             // 
             // MainForm
             // 
