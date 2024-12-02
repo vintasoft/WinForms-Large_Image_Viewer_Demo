@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -129,6 +130,7 @@ namespace LargeImageViewerDemo
         /// <summary>
         /// Get or sets the zoom of the image, in percents.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float Zoom
         {
             get
@@ -154,6 +156,7 @@ namespace LargeImageViewerDemo
         /// <summary>
         /// Get or sets the maximum zoom of the image.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float MaxZoom
         {
             get
