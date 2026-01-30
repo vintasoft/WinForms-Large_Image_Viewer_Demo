@@ -81,13 +81,13 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <PackageReference Include="Vintasoft.Imaging" Version="15.0.2.1" />
-    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="15.0.3.1" />
+    <PackageReference Include="Vintasoft.Imaging.Gdi" Version="15.0.3.1" />
     <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.0.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.2.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.2.1" />
-    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.2.1" />
-    <PackageReference Include="Vintasoft.Imaging.WsiCodec" Version="15.0.2.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="7.0.3.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="12.0.3.1" />
+    <PackageReference Include="Vintasoft.Imaging.UI" Version="15.0.3.1" />
+    <PackageReference Include="Vintasoft.Imaging.WsiCodec" Version="15.0.3.1" />
     <PackageReference Include="Vintasoft.Shared" Version="4.6.1.1" />
   </ItemGroup>
   <ItemGroup>
