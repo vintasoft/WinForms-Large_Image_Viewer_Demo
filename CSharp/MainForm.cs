@@ -56,7 +56,12 @@ namespace LargeImageViewerDemo
         /// </summary>
         static MainForm()
         {
-            WsiCodecAssembly.Init();
+            Jpeg2000AssemblyLoader.Load();
+            WsiCodecAssemblyLoader.Load();
+            CadCodecAssemblyLoader.Load();
+
+            // set CustomFontProgramsController for all opened documents
+            CustomFontProgramsController.SetDefaultFontProgramsController();
         }
 
         /// <summary>
@@ -68,11 +73,6 @@ namespace LargeImageViewerDemo
             Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
 
             InitializeComponent();
-
-            // set CustomFontProgramsController for all opened documents
-            CustomFontProgramsController.SetDefaultFontProgramsController();
-
-            Jpeg2000AssemblyLoader.Load();
 
             Text = _titlePrefix;
 
