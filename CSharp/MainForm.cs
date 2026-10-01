@@ -575,6 +575,7 @@ namespace LargeImageViewerDemo
                 MaxZoom = (float)Math.Ceiling(maxZoom / 100f) * 100f;
 
                 // add images to viewer
+                imageViewer1.SizeMode = ImageSizeMode.BestFit;
                 imageViewer1.Images.AddRange(images.ToArray());
                 imageViewer1.FocusedIndex = focusedIndex;
                 images.Clear();
